@@ -1,17 +1,31 @@
-var clicks = 0;
-var clicks2 = 0;
-document.getElementById("log-clicks-1").innerHTML="Tammy Clicks: "+clicks;
-document.getElementById("log-clicks-2").innerHTML="Toby Clicks: "+clicks2;
+var cats = ["Tammy","Toby"];
+var catClicks = [0,0];
+var catImages = ["img/kitten1.jpg","img/kitten2.jpg"];
 
-var elem = document.getElementById("kitten-img");
-elem.addEventListener("click", function(){
-  clicks++;
-  document.getElementById("log-clicks-1").innerHTML="Tammy Clicks: "+clicks;
-}, false);
+document.getElementById("cat-list").innerHTML="List of Cats: ";
 
+for (var i = 0;i < cats.length; i++) {
+  var cat = cats[i];
+  var elem = document.createElement("h3");
+  elem.setAttribute("id","h3-"+cat);
+  elem.textContent = cat+"  Clicks: "+catClicks[i];
+  var currentDiv = document.getElementById("cat-list");
 
-var elem = document.getElementById("kitten2-img");
-elem.addEventListener("click", function(){
-  clicks2++;
-  document.getElementById("log-clicks-2").innerHTML="Toby Clicks: "+clicks2;
-}, false);
+  elem.addEventListener("click", (function(catCopy) {
+    return function() {
+      var catImageSrc = catImages[cats.indexOf(catCopy)];
+      var catImage = document.createElement('img');
+      var imageDiv = document.getElementById("cat-picture");
+      catImage.src = catImageSrc;
+      imageDiv.innerHTML = '';
+      imageDiv.appendChild(catImage);
+      imageDiv.addEventListener("click", function(){
+        catClicks[cats.indexOf(catCopy)]++;
+        document.getElementById("h3-"+catCopy).innerHTML=catCopy+"  Clicks: "+catClicks[cats.indexOf(catCopy)];
+      });
+    };
+  }) (cat)); 
+  
+  document.body.insertBefore(elem,currentDiv.nextSibling);
+};
+
