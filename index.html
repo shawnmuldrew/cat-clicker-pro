@@ -7,27 +7,27 @@
     <meta name="author" content="Shawn Muldrew">
     <title>Cat Clicker</title>
 
-
     <link href="css/style.css" rel="stylesheet">
 
   </head>
 
   <body>
     <header>
-      <h1>Click on the Cat Picture<br></h1>
+      <h1>Pick Cat and Click on Picture<br></h1>
     </header>
 
-    <h2 id="cat-list"></h2>
+    <h2>
+    <ul id="catList" class="catList"></ul>
+    </h2>
 
-    <div id="cat-picture"></div>
+    <p><div id="catPicture"></div></p>
 
-    <!--    <div id = "cat-picture"></div>  -->
+    <h2>
+    <div id="catCount" class="catCount"></div>
+    </h2>
 
-    <script src="js/script.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/cat-clicker.js"></script>
     
-
-    <footer>
-      <p>&copy; Cat Clicking 2016 </p>
-    </footer>
   </body>
 </html>
